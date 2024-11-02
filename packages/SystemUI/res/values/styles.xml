@@ -1732,4 +1732,10 @@
     <style name="ShortcutHelperTheme" parent="@style/ShortcutHelperThemeCommon">
         <item name="android:windowLightNavigationBar">true</item>
     </style>
+
+    <!-- Lyric -->
+    <style name="TextApperance.StatusBar.Lyric" parent="@*android:style/TextAppearance.StatusBar">
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">@*android:string/config_bodyFontFamily</item>
+    </style>
 </resources>
