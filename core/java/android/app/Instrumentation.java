@@ -72,6 +72,7 @@ import java.util.Objects;
 import java.util.StringJoiner;
 import java.util.concurrent.TimeoutException;
 
+import com.android.internal.util.crdroid.PixelPropsUtils;
 import com.android.internal.util.crdroid.MeizuPropsUtils;
 
 /**
@@ -1355,9 +1356,11 @@ public class Instrumentation {
         Application app = getFactory(context.getPackageName())
                 .instantiateApplication(cl, className);
         app.attach(context);
+        String packageName = context.getPackageName();
         com.android.internal.util.android.PropsHooksUtils.setProps(context);
+        PixelPropsUtils.setProps(packageName);
         if (SystemProperties.getBoolean(DISGUISE_PROPS_FOR_MUSIC_APP, false)) {
-            MeizuPropsUtils.setProps(context);
+            MeizuPropsUtils.setProps(packageName);
         }
         return app;
     }
@@ -1376,9 +1379,11 @@ public class Instrumentation {
             ClassNotFoundException {
         Application app = (Application)clazz.newInstance();
         app.attach(context);
+        String packageName = context.getPackageName();
         com.android.internal.util.android.PropsHooksUtils.setProps(context);
+        PixelPropsUtils.setProps(packageName);
         if (SystemProperties.getBoolean(DISGUISE_PROPS_FOR_MUSIC_APP, false)) {
-            MeizuPropsUtils.setProps(context);
+            MeizuPropsUtils.setProps(packageName);
         }
         return app;
     }

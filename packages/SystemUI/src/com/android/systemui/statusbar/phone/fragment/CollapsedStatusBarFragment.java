@@ -1077,7 +1077,7 @@ public class CollapsedStatusBarFragment extends Fragment implements CommandQueue
         public void showLyricView(boolean animate) {
             StatusBarVisibilityModel visibilityModel = mLastModifiedVisibility;
             boolean disableNotifications = !visibilityModel.getShowNotificationIcons();
-            boolean hasOngoingCall = visibilityModel.getShowOngoingCallChip();
+            boolean hasOngoingCall = visibilityModel.getShowOngoingActivityChip();
             if (!disableNotifications && !hasOngoingCall && isLyricStarted()) {
                 animateHide(mStartSide, animate);
                 animateHide(mCenteredArea, animate);

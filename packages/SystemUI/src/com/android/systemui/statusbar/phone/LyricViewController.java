@@ -114,8 +114,7 @@ public abstract class LyricViewController implements
         if (!mEnabled) return;
 
         Notification notification = sbn.getNotification();
-        boolean isLyric = ((notification.flags & Notification.FLAG_ALWAYS_SHOW_TICKER) != 0)
-                && ((notification.flags & Notification.FLAG_ONLY_UPDATE_TICKER) != 0);
+        boolean isLyric = (notification.flags & Notification.FLAG_ALWAYS_SHOW_TICKER) != 0;
 
         boolean isCurrentNotification = mCurrentNotificationId == sbn.getId() &&
                 TextUtils.equals(sbn.getPackageName(), mCurrentNotificationPackage);
@@ -134,10 +133,12 @@ public abstract class LyricViewController implements
             if (!isCurrentNotification ||
                     notification.extras.getBoolean(EXTRA_TICKER_ICON_SWITCH, false)) {
                 int iconId = notification.extras.getInt(EXTRA_TICKER_ICON, -1);
+                String slot = sbn.getPackageName() + "/0x" + Integer.toHexString(sbn.getId());
+                StatusBarIconView statusBarIconView = new StatusBarIconView(mContext, slot, sbn);
                 Drawable icon = iconId == -1 ? notification.getSmallIcon().loadDrawable(mContext) :
-                        StatusBarIconView.getIcon(mContext, sbn.getPackageContext(mContext),
+                        statusBarIconView.getIcon(mContext, sbn.getPackageContext(mContext),
                                 new StatusBarIcon(sbn.getPackageName(), sbn.getUser(),
-                                    iconId, notification.iconLevel, 0, null));
+                                    iconId, notification.iconLevel, 0, null, StatusBarIcon.Type.MaybeMonochromeAppIcon));
                 mIconSwitcher.setImageDrawable(icon);
                 updateIconTint();
                 startLyric();

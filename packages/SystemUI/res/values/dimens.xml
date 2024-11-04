@@ -2047,8 +2047,8 @@
     <dimen name="abc_slice_big_pic_max_height">64dp</dimen>
 
     <!-- Lyric -->
-    <dimen name="lyric_icon_margin_end">0dp</dimen>
+    <dimen name="lyric_icon_margin_end">-1dp</dimen>
     <dimen name="lyric_padding_start">-2dp</dimen>
     <dimen name="lyric_padding_end">2dp</dimen>
-    <dimen name="lyric_text_padding_top">1dp</dimen>
+    <dimen name="lyric_text_padding_top">0dp</dimen>
 </resources>
