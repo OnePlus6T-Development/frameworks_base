@@ -1,0 +1,30 @@
+name: Update fork
+run-name: Updating newest code from RisingTechOSS...
+permissions: 
+  write-all
+  read-all
+on: 
+  schedule:
+    - cron: "50 9,21 * * *"
+  workflow_dispatch:
+  
+jobs:
+  Update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+        
+      - name: ls
+        run: |
+          ls ${{ github.workspace }}
+          
+      - name: update
+        run: |
+          git remote add rising https://github.com/RisingTechOSS/android_frameworks_base_new
+          git fetch rising
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git merge rising/fifteen -m "fw/b: Merge newest codes to `rising_fifteen`"
+          git push
+          echo "This job's status is ${{ job.status }}."
