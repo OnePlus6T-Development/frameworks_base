@@ -1,8 +1,6 @@
 name: Update fork
 run-name: Updating newest code from RisingTechOSS...
-permissions: 
-  write-all
-  read-all
+permissions: write-all
 on: 
   schedule:
     - cron: "50 9,21 * * *"
