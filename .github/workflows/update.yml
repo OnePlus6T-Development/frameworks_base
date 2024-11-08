@@ -25,6 +25,6 @@ jobs:
           git fetch rising
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git merge rising/fifteen -m "fw/b: Merge newest codes to `rising_fifteen`"
+          git merge rising/fifteen -m "fw/b: Merge newest codes to rising_fifteen"
           git push
           echo "This job's status is ${{ job.status }}."
